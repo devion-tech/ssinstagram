@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ssinstagram.online
+
+# Sitemaps
+Sitemap: https://ssinstagram.online/sitemap.xml
