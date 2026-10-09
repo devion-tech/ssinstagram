@@ -4,6 +4,9 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import Providers from './redux/Providers';
 import { Header } from './component/common/Header';
 import { Footer } from './component/common/Footer';
+import Script from 'next/script';
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://ssinstagram.online';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -19,7 +22,6 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://ssinstagram.online';
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
@@ -228,6 +230,23 @@ export default function RootLayout({ children }) {
         <Providers>{children}</Providers>
         <Footer />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+
+        {/* Microsoft Clarity */}
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){
+                (c[a].q=c[a].q||[]).push(arguments)
+              };
+              t=l.createElement(r);
+              t.async=1;
+              t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];
+              y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "yuv63nwajm");
+         `}
+        </Script>
+
 
       </body>
     </html>
