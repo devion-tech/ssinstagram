@@ -1,5 +1,9 @@
 import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+import { GoogleAnalytics } from '@next/third-parties/google';
+import Providers from './redux/Providers';
+import { Header } from './component/common/Header';
+import { Footer } from './component/common/Footer';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -210,10 +214,6 @@ const jsonLdData = {
   ],
 };
 
-import Providers from './redux/Providers';
-import { Header } from './component/common/Header';
-import { Footer } from './component/common/Footer';
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} scroll-smooth bg-white font-sans antialiased`}>
@@ -227,6 +227,8 @@ export default function RootLayout({ children }) {
         <Header />
         <Providers>{children}</Providers>
         <Footer />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+
       </body>
     </html>
   );
