@@ -1,7 +1,7 @@
 export const FAQ = ({ items = [] }) => {
     return (
         <section>
-            <h2 className="mb-6 text-2xl font-bold text-slate-900">
+            <h2 className="mb-6 text-2xl font-extrabold text-slate-900">
                 Frequently Asked Questions
             </h2>
 
