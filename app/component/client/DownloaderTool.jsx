@@ -40,6 +40,7 @@ export default function DownloaderTool() {
 
   // Process Instagram Video / Reel
   const handleProcess = async (targetUrl) => {
+    if (downloading) return;
     const trimmed = (targetUrl !== undefined ? targetUrl : url).trim();
     if (!trimmed) {
       showToast('Please enter an Instagram URL');
@@ -75,11 +76,13 @@ export default function DownloaderTool() {
   // Form submit
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (downloading) return;
     handleProcess(url);
   };
 
   // Clipboard paste
   const handlePaste = async () => {
+    if (downloading) return;
     try {
       if (navigator.clipboard && navigator.clipboard.readText) {
         const text = await navigator.clipboard.readText();
@@ -105,6 +108,7 @@ export default function DownloaderTool() {
 
   // Download Media handler (MP4 or MP3)
   const handleDownloadMedia = async (format = 'mp4') => {
+    if (downloading) return;
     const currentUrl = url || 'https://www.instagram.com/reel/C3zY09yvQ6T/';
     const result = await dispatch(downloadMedia({ url: currentUrl, action: 'download', format }));
 
@@ -127,6 +131,7 @@ export default function DownloaderTool() {
 
   // Save cover image
   const handleSaveCover = () => {
+    if (downloading) return;
     const thumbUrl =
       videoInfo?.thumbnail ||
       'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1600&auto=format&fit=crop&q=90';
@@ -179,29 +184,12 @@ export default function DownloaderTool() {
                 className="tool-input"
                 placeholder="Paste Instagram video or Reel URL here"
                 value={url}
+                disabled={downloading}
                 onChange={(e) => dispatch(setUrl(e.target.value))}
                 required
                 spellCheck="false"
                 aria-label="Instagram Video Link"
               />
-              {url.length > 0 && (
-                <button
-                  type="button"
-                  className="clear-input-btn"
-                  onClick={() => {
-                    dispatch(setUrl(''));
-                    dispatch(clearDownloaderState());
-                    if (inputRef.current) inputRef.current.focus();
-                  }}
-                  aria-label="Clear"
-                  title="Clear input"
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </button>
-              )}
             </div>
 
             {/* Centered Buttons Row */}
@@ -209,7 +197,7 @@ export default function DownloaderTool() {
               <button
                 type="submit"
                 className={`btn-download-main ${loading ? 'loading' : ''}`}
-                disabled={loading}
+                disabled={loading || downloading}
               >
                 {loading ? (
                   <>
@@ -221,13 +209,30 @@ export default function DownloaderTool() {
                 )}
               </button>
 
-              <button
-                type="button"
-                className="btn-paste-subtle"
-                onClick={handlePaste}
-              >
-                Paste
-              </button>
+              {url.trim() ? (
+                <button
+                  type="button"
+                  className="btn-paste-subtle"
+                  onClick={() => {
+                    if (downloading) return;
+                    dispatch(setUrl(''));
+                    dispatch(clearDownloaderState());
+                    inputRef.current?.focus();
+                  }}
+                  disabled={downloading}
+                >
+                  Clear
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="btn-paste-subtle"
+                  onClick={handlePaste}
+                  disabled={downloading}
+                >
+                  Paste
+                </button>
+              )}
             </div>
           </form>
 
@@ -255,6 +260,7 @@ export default function DownloaderTool() {
                   className="result-close"
                   onClick={() => dispatch(clearDownloaderState())}
                   aria-label="Close"
+                  disabled={downloading}
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
                     <line x1="18" y1="6" x2="6" y2="18" />
@@ -327,6 +333,7 @@ export default function DownloaderTool() {
                       type="button"
                       className="dl-action-btn secondary"
                       onClick={handleSaveCover}
+                      disabled={downloading}
                     >
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
                         <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
@@ -360,6 +367,7 @@ export default function DownloaderTool() {
           type="button"
           className="back-to-top-btn"
           onClick={scrollToTop}
+          disabled={downloading}
           aria-label="Scroll to top"
           title="Back to top"
         >
