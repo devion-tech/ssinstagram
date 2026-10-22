@@ -62,8 +62,13 @@ export const metadata = {
   },
 
   icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36' fill='none'><rect width='36' height='36' rx='9' fill='%232563eb'/><rect x='7.5' y='7.5' width='21' height='21' rx='6' stroke='white' stroke-width='2.2'/><circle cx='23.2' cy='12.8' r='1.3' fill='white'/><path d='M18 12.5V20.5' stroke='white' stroke-width='2.2' stroke-linecap='round'/><path d='M14.5 17.5L18 21L21.5 17.5' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/><path d='M13.5 24H22.5' stroke='white' stroke-width='2.2' stroke-linecap='round'/></svg>",
-    apple: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36' fill='none'><rect width='36' height='36' rx='9' fill='%232563eb'/><rect x='7.5' y='7.5' width='21' height='21' rx='6' stroke='white' stroke-width='2.2'/><circle cx='23.2' cy='12.8' r='1.3' fill='white'/><path d='M18 12.5V20.5' stroke='white' stroke-width='2.2' stroke-linecap='round'/><path d='M14.5 17.5L18 21L21.5 17.5' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/><path d='M13.5 24H22.5' stroke='white' stroke-width='2.2' stroke-linecap='round'/></svg>",
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    manifest: '/site.webmanifest',
   },
 };
 
