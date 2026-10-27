@@ -1,30 +1,43 @@
+
 export const mp4FAQs = [
     {
-        "question": "How do I download an Instagram video?",
-        "answer": "Copy the URL of the Instagram video, paste it into the SSInstagram downloader, and click the Download button. Once the video is processed, click Download Video (MP4) to save it."
+        question: "How do I download an Instagram Reel?",
+        answer:
+            "Copy the link to the Instagram Reel, paste it into the SSInstagram downloader, and click Download. When processing is complete, click Download Video (MP4) to save the available video."
     },
     {
-        "question": "How do I download an Instagram Reel?",
-        "answer": "Copy the link to the Instagram Reel you want to download and paste it into SSInstagram. Click Download and then use the Download Video (MP4) button when the Reel is ready."
+        question: "Can I download Instagram Reels as MP4?",
+        answer:
+            "Yes. SSInstagram provides supported Instagram Reels as MP4 video files. The Reel must be accessible to the downloader for processing to work."
     },
     {
-        "question": "Can I download Instagram videos on my phone?",
-        "answer": "Yes. SSInstagram works in a mobile web browser, so you can download supported Instagram videos and Reels on Android, iPhone, and iPad."
+        question: "Can I download Instagram Reels without an app?",
+        answer:
+            "Yes. SSInstagram works directly in your web browser, so you do not need to install a separate downloader app."
     },
     {
-        "question": "What format are Instagram videos downloaded in?",
-        "answer": "Supported Instagram videos and Reels are downloaded as MP4 video files."
+        question: "Can I download Instagram Reels on my phone?",
+        answer:
+            "You can use SSInstagram in a supported mobile browser on Android, iPhone, and iPad to download Reels that the tool can access."
     },
     {
-        "question": "Can I download Instagram videos without an app?",
-        "answer": "Yes. SSInstagram works directly in your web browser, so you don't need to install a separate downloader app."
+        question: "How do I download an Instagram video?",
+        answer:
+            "Copy the URL of the Instagram video, paste it into SSInstagram, and click Download. Once the video has been processed, click Download Video (MP4) to save it."
     },
     {
-        "question": "Why is my Instagram video not downloading?",
-        "answer": "Make sure you have copied the correct Instagram URL and that the video or Reel is accessible. You can also try copying the link again and submitting it to the downloader."
+        question: "Why is my Instagram Reel not downloading?",
+        answer:
+            "Check that you copied the correct Instagram link and that the Reel is still accessible. If the download fails, try copying the link again and submitting it. Some content may not be accessible to the downloader."
     },
     {
-        "question": "Where is the downloaded Instagram video saved?",
-        "answer": "The downloaded MP4 file is normally saved to your browser's default download location. On many devices, you can find it in the Downloads folder."
+        question: "Can I download a Reel from a private Instagram account?",
+        answer:
+            "Private Instagram content may not be accessible to SSInstagram. Downloads depend on whether the Reel can be accessed and processed by the tool."
+    },
+    {
+        question: "Where is my downloaded Instagram Reel saved?",
+        answer:
+            "The MP4 file is generally saved to your browser's default download location. Depending on your device and browser, you may find it in the Downloads folder or the Files app."
     }
-]
+];

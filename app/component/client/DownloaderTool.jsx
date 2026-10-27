@@ -168,154 +168,158 @@ export default function DownloaderTool() {
 
   return (
     <>
-        <div className="mb-11 text-center">
-          <h1 className="w-full mb-4 text-xl md:text-4xl font-extrabold leading-tight tracking-[-0.03em] text-slate-900">Instagram Video Downloader</h1>
+      <div className="mb-11 text-center">
+        <h1 className="w-full mb-4 text-xl md:text-4xl font-extrabold leading-tight tracking-[-0.03em] text-slate-900">
+          Instagram Reels Downloader
+        </h1>
 
-          <p className="mb-4">
-            Download Instagram videos and Reels in MP4 by pasting the Instagram URL below. No app or software installation is required.
-          </p>
+        <p className="mb-4">
+          Download supported Instagram Reels as MP4 videos with SSInstagram.
+          Copy the Reel link, paste it into the downloader, and save the video
+          directly from your browser without installing an app.
+        </p>
 
-          {/* Form */}
-          <form className="tool-form" onSubmit={handleSubmit} autoComplete="off">
-            <div className="input-bar-wrap">
-              <input
-                type="url"
-                ref={inputRef}
-                className="tool-input"
-                placeholder="Paste Instagram video or Reel URL here"
-                value={url}
-                disabled={downloading}
-                onChange={(e) => dispatch(setUrl(e.target.value))}
-                required
-                spellCheck="false"
-                aria-label="Instagram Video Link"
-              />
-            </div>
+        {/* Form */}
+        <form className="tool-form" onSubmit={handleSubmit} autoComplete="off">
+          <div className="input-bar-wrap">
+            <input
+              type="url"
+              ref={inputRef}
+              className="tool-input"
+              placeholder="Paste Instagram video or Reel URL here"
+              value={url}
+              disabled={downloading}
+              onChange={(e) => dispatch(setUrl(e.target.value))}
+              required
+              spellCheck="false"
+              aria-label="Instagram Video Link"
+            />
+          </div>
 
-            {/* Centered Buttons Row */}
-            <div className="action-buttons-row">
-              <button
-                type="submit"
-                className={`btn-download-main ${loading ? 'loading' : ''}`}
-                disabled={loading || downloading}
-              >
-                {loading ? (
-                  <>
-                    <span className="spinner-inline"></span>
-                    <span>Processing...</span>
-                  </>
-                ) : (
-                  <span>Download</span>
-                )}
-              </button>
-
-              {url.trim() ? (
-                <button
-                  type="button"
-                  className="btn-paste-subtle"
-                  onClick={() => {
-                    if (downloading) return;
-                    dispatch(setUrl(''));
-                    dispatch(clearDownloaderState());
-                    inputRef.current?.focus();
-                  }}
-                  disabled={downloading}
-                >
-                  Clear
-                </button>
+          {/* Centered Buttons Row */}
+          <div className="action-buttons-row">
+            <button
+              type="submit"
+              className={`btn-download-main ${loading ? 'loading' : ''}`}
+              disabled={loading || downloading}
+            >
+              {loading ? (
+                <>
+                  <span className="spinner-inline"></span>
+                  <span>Processing...</span>
+                </>
               ) : (
-                <button
-                  type="button"
-                  className="btn-paste-subtle"
-                  onClick={handlePaste}
-                  disabled={downloading}
-                >
-                  Paste
-                </button>
+                <span>Download</span>
               )}
-            </div>
-          </form>
+            </button>
 
-          {/* Loading Indicator */}
-          {loading && (
-            <div className="loading-box">
-              <div className="loading-spinner"></div>
-              <div className="loading-text-main">Fetching Instagram media stream...</div>
-              <div className="loading-text-sub">Parsing high-definition MP4 without watermark</div>
-            </div>
-          )}
+            {url.trim() ? (
+              <button
+                type="button"
+                className="btn-paste-subtle"
+                onClick={() => {
+                  if (downloading) return;
+                  dispatch(setUrl(''));
+                  dispatch(clearDownloaderState());
+                  inputRef.current?.focus();
+                }}
+                disabled={downloading}
+              >
+                Clear
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn-paste-subtle"
+                onClick={handlePaste}
+                disabled={downloading}
+              >
+                Paste
+              </button>
+            )}
+          </div>
+        </form>
 
-          {/* Result Card */}
-          {videoInfo && (
-            <div className="result-box">
-              <div className="result-header">
-                <span className="result-tag">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  Ready to Download
-                </span>
-                <button
-                  type="button"
-                  className="result-close"
-                  onClick={() => dispatch(clearDownloaderState())}
-                  aria-label="Close"
-                  disabled={downloading}
+        {/* Loading Indicator */}
+        {loading && (
+          <div className="loading-box">
+            <div className="loading-spinner"></div>
+            <div className="loading-text-main">Fetching Instagram media stream...</div>
+            <div className="loading-text-sub">Parsing high-definition MP4 without watermark</div>
+          </div>
+        )}
+
+        {/* Result Card */}
+        {videoInfo && (
+          <div className="result-box">
+            <div className="result-header">
+              <span className="result-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Ready to Download
+              </span>
+              <button
+                type="button"
+                className="result-close"
+                onClick={() => dispatch(clearDownloaderState())}
+                aria-label="Close"
+                disabled={downloading}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="result-grid">
+              <div className="result-media-wrap">
+                <video
+                  className="result-video"
+                  playsInline
+                  loop
+                  controls
+                  poster={videoInfo.thumbnail}
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </button>
+                  <source src={videoInfo.videoUrl} type="video/mp4" />
+                  Your browser does not support HTML5 video.
+                </video>
               </div>
 
-              <div className="result-grid">
-                <div className="result-media-wrap">
-                  <video
-                    className="result-video"
-                    playsInline
-                    loop
-                    controls
-                    poster={videoInfo.thumbnail}
-                  >
-                    <source src={videoInfo.videoUrl} type="video/mp4" />
-                    Your browser does not support HTML5 video.
-                  </video>
-                </div>
-
-                <div className="result-info">
-                  <div>
-                    <div className="result-creator-line">
-                      <img
-                        className="result-avatar"
-                        src={videoInfo.thumbnail}
-                        alt="Creator profile"
-                      />
-                      <div>
-                        <div className="result-username">{videoInfo.creator || '@instagram.creator'}</div>
-                        <div className="result-type">Instagram Video / Reel {videoInfo.duration ? `· ${videoInfo.duration}` : ''}</div>
-                      </div>
+              <div className="result-info">
+                <div>
+                  <div className="result-creator-line">
+                    <img
+                      className="result-avatar"
+                      src={videoInfo.thumbnail}
+                      alt="Creator profile"
+                    />
+                    <div>
+                      <div className="result-username">{videoInfo.creator || '@instagram.creator'}</div>
+                      <div className="result-type">Instagram Video / Reel {videoInfo.duration ? `· ${videoInfo.duration}` : ''}</div>
                     </div>
-
-                    <p className="result-caption">
-                      &quot;{videoInfo.title || 'Instagram media content ready for offline saving.'}&quot;
-                    </p>
                   </div>
 
-                  <div className="result-download-buttons">
-                    <button
-                      type="button"
-                      className="dl-action-btn primary"
-                      disabled={downloading}
-                      onClick={() => handleDownloadMedia('mp4')}
-                    >
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
-                      </svg>
-                      <span>{downloading && downloadType === 'video' ? 'Downloading...' : 'Download Video (MP4)'}</span>
-                    </button>
+                  <p className="result-caption">
+                    &quot;{videoInfo.title || 'Instagram media content ready for offline saving.'}&quot;
+                  </p>
+                </div>
 
-                    {/* <button
+                <div className="result-download-buttons">
+                  <button
+                    type="button"
+                    className="dl-action-btn primary"
+                    disabled={downloading}
+                    onClick={() => handleDownloadMedia('mp4')}
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                    </svg>
+                    <span>{downloading && downloadType === 'video' ? 'Downloading...' : 'Download Video (MP4)'}</span>
+                  </button>
+
+                  {/* <button
                       type="button"
                       className="dl-action-btn secondary"
                       disabled={downloading}
@@ -329,37 +333,37 @@ export default function DownloaderTool() {
                       <span>{downloading && downloadType === 'audio' ? 'Extracting MP3...' : 'Download Audio (MP3)'}</span>
                     </button> */}
 
-                    <button
-                      type="button"
-                      className="dl-action-btn secondary"
-                      onClick={handleSaveCover}
-                      disabled={downloading}
-                    >
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-                        <circle cx="9" cy="9" r="2" />
-                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-                      </svg>
-                      <span>Save Cover Photo</span>
-                    </button>
-                  </div>
-
-                  {progress > 0 && (
-                    <div className="progress-bar-wrap">
-                      <div className="progress-header">
-                        <span>Saving to your device...</span>
-                        <span>{progress}%</span>
-                      </div>
-                      <div className="progress-track">
-                        <div className="progress-fill" style={{ width: `${progress}%` }}></div>
-                      </div>
-                    </div>
-                  )}
+                  <button
+                    type="button"
+                    className="dl-action-btn secondary"
+                    onClick={handleSaveCover}
+                    disabled={downloading}
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                      <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                      <circle cx="9" cy="9" r="2" />
+                      <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                    </svg>
+                    <span>Save Cover Photo</span>
+                  </button>
                 </div>
+
+                {progress > 0 && (
+                  <div className="progress-bar-wrap">
+                    <div className="progress-header">
+                      <span>Saving to your device...</span>
+                      <span>{progress}%</span>
+                    </div>
+                    <div className="progress-track">
+                      <div className="progress-fill" style={{ width: `${progress}%` }}></div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
+      </div>
 
       {/* Floating Back to Top Button */}
       {showScrollTop && (

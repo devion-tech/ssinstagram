@@ -23,6 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 
+
 export const metadata = {
   metadataBase: new URL(baseUrl),
 
@@ -32,7 +33,7 @@ export const metadata = {
   },
 
   description:
-    'SSInstagram is an online tool for downloading supported Instagram videos and Reels as MP4 files directly from your browser.',
+    'SSInstagram is an Instagram Reels downloader for saving supported Reels as MP4 videos directly from your browser.',
 
   robots: {
     index: true,
@@ -67,159 +68,28 @@ export const metadata = {
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
-    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
     manifest: '/site.webmanifest',
   },
 };
 
+
 const jsonLdData = {
   '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'WebApplication',
-      '@id': `${baseUrl}/#webapp`,
-      name: 'SSInstagram – Instagram Video Downloader',
-      url: `${baseUrl}/`,
-      applicationCategory: 'MultimediaApplication',
-      operatingSystem: 'All',
-      browserRequirements: 'Requires JavaScript. Requires HTML5.',
-      description:
-        'SSInstagram is an online Instagram video downloader that lets users download supported Instagram videos and Reels as MP4 files directly from their browser.',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD',
-      },
-      featureList: [
-        'Instagram video downloader',
-        'Instagram Reels downloader',
-        'Download videos as MP4 files',
-        'Works directly in a web browser',
-        'Works on mobile and desktop devices',
-      ],
-    },
-
-    {
-      '@type': 'WebSite',
-      '@id': `${baseUrl}/#website`,
-      url: `${baseUrl}/`,
-      name: 'SSInstagram',
-      description: 'Instagram Video Downloader',
-      publisher: {
-        '@type': 'Organization',
-        name: 'SSInstagram',
-      },
-    },
-
-    {
-      '@type': 'HowTo',
-      '@id': `${baseUrl}/#howto`,
-      name: 'How to Download Instagram Videos',
-      description:
-        'Follow these steps to download supported Instagram videos and Reels as MP4 files with SSInstagram.',
-      step: [
-        {
-          '@type': 'HowToStep',
-          position: 1,
-          name: 'Copy the Instagram Video URL',
-          text:
-            'Open Instagram and copy the URL of the video or Reel you want to download.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 2,
-          name: 'Paste the URL into SSInstagram',
-          text:
-            'Open ssinstagram.online and paste the Instagram video or Reel URL into the text box.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 3,
-          name: 'Start the Download',
-          text:
-            'Click the Download button and wait while the Instagram video or Reel is processed.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 4,
-          name: 'Download the MP4 Video',
-          text:
-            'When the video is ready, click Download Video (MP4) to save the video to your device.',
-        },
-      ],
-    },
-
-    {
-      '@type': 'FAQPage',
-      '@id': `${baseUrl}/#faq`,
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'How do I download an Instagram video?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text:
-              'Copy the URL of the Instagram video, paste it into the SSInstagram downloader, and click the Download button. Once the video is processed, click Download Video (MP4) to save it.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How do I download an Instagram Reel?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text:
-              'Copy the link to the Instagram Reel you want to download and paste it into SSInstagram. Click Download and then use the Download Video (MP4) button when the Reel is ready.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Can I download Instagram videos on my phone?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text:
-              'Yes. SSInstagram works in a mobile web browser, so you can download supported Instagram videos and Reels on Android, iPhone, and iPad.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'What format are Instagram videos downloaded in?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text:
-              'Supported Instagram videos and Reels are downloaded as MP4 video files.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Can I download Instagram videos without an app?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text:
-              "Yes. SSInstagram works directly in your web browser, so you don't need to install a separate downloader app.",
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Why is my Instagram video not downloading?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text:
-              'Make sure you have copied the correct Instagram URL and that the video or Reel is accessible. You can also try copying the link again and submitting it to the downloader.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Where is the downloaded Instagram video saved?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text:
-              "The downloaded MP4 file is normally saved to your browser's default download location. On many devices, you can find it in the Downloads folder.",
-          },
-        },
-      ],
-    },
-  ],
+  '@type': 'WebSite',
+  '@id': `${baseUrl}/#website`,
+  url: `${baseUrl}/`,
+  name: 'SSInstagram',
+  description:
+    'SSInstagram is an Instagram Reels downloader for supported videos.',
+  publisher: {
+    '@type': 'Organization',
+    name: 'SSInstagram',
+  },
 };
+
 
 export default function RootLayout({ children }) {
   return (
