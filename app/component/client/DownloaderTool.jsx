@@ -168,7 +168,7 @@ export default function DownloaderTool() {
 
   return (
     <>
-      <div className="mb-11 text-center">
+      <div className="mb-11 text-center ">
         <h1 className="w-full mb-4 text-xl md:text-4xl font-extrabold leading-tight tracking-[-0.03em] text-slate-900">
           Instagram Reels Downloader
         </h1>

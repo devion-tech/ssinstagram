@@ -3,7 +3,9 @@ import { mp4FAQs } from '../constant/faqJson';
 
 export default function HomeSeoContent() {
   return (
+
     <div className="mt-10 text-md leading-[1.75] text-slate-700">
+
       <p className="mb-4">
         SSInstagram is an Instagram Reels downloader that lets you save
         supported Reels as MP4 videos. Copy the link to the Reel you want
@@ -61,24 +63,25 @@ export default function HomeSeoContent() {
         </div>
       </div>
 
+      {/* Instagram Reels Downloader */}
       <section className="mb-4">
         <h2 className="mb-4 text-[1.35rem] font-extrabold text-slate-900">
-          Instagram Reels Downloader
+          Free Instagram Reels Downloader Online – No App Required
         </h2>
 
         <p className="mb-4 leading-[1.7] text-slate-700">
-          Looking for a way to save an Instagram Reel to your device?
-          SSInstagram lets you download supported Reels as MP4 videos
-          through your browser. You can use the downloaded file for
-          personal offline viewing.
+          Looking for a free Instagram Reels downloader? SSInstagram
+          lets you save supported Instagram Reels as MP4 videos directly
+          through your web browser. You can use the online tool without
+          installing a separate application on your phone or computer.
         </p>
 
         <p className="leading-[1.7] text-slate-700">
-          To get started, use the link to the Reel you want to save.
-          The downloader will attempt to process the link and provide
-          a video file when the content is accessible. Some Reels may
-          not be available to download because of access restrictions
-          or processing issues.
+          To download a Reel, copy its link from Instagram and paste it
+          into the downloader. Once the video has been processed, select
+          the available download option to save it to your device.
+          Download availability depends on whether the Instagram content
+          can be accessed and processed.
         </p>
       </section>
 
@@ -148,6 +151,7 @@ export default function HomeSeoContent() {
         </ul>
       </section>
 
+      {/* MP4 Format */}
       <section className="mb-4">
         <h2 className="mb-4 text-[1.35rem] font-extrabold tracking-[-0.02em] text-slate-900">
           Download Instagram Reels in MP4 Format
@@ -166,6 +170,7 @@ export default function HomeSeoContent() {
         </p>
       </section>
 
+      {/* Which Instagram Reels Can You Download? */}
       <section className="mb-4">
         <h2 className="mb-4 text-[1.35rem] font-extrabold tracking-[-0.02em] text-slate-900">
           Which Instagram Reels Can You Download?
@@ -186,6 +191,54 @@ export default function HomeSeoContent() {
 
       {/* FAQ */}
       <FAQ items={mp4FAQs} />
+
+      {/* Latest Instagram Guides */}
+      <section className="mt-10 mb-4">
+        <h2 className="mb-3 text-[1.35rem] font-extrabold tracking-[-0.02em] text-slate-900">
+          Latest Instagram Guides and Tips
+        </h2>
+
+        <p className="mb-5 leading-[1.7] text-slate-700">
+          Explore helpful Instagram tutorials and learn how to download
+          Reels, save videos on your device, and use online downloading tools.
+        </p>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {[
+            {
+              title: 'How to Download Instagram Reels: A Complete Guide',
+              description:
+                'Learn how to download supported Instagram Reels using an online downloader and save videos on iPhone and Android.',
+              href: '/blog/how-to-download-instagram-reels',
+            },
+          ].map((post) => (
+            <a
+              key={post.href}
+              href={post.href}
+              className="rounded-xl border border-slate-200 p-5 transition-shadow hover:shadow-md"
+            >
+              <h3 className="mb-2 text-lg font-bold text-[#041e49] hover:text-[#007FFF]">
+                {post.title}
+              </h3>
+
+              <p className="text-sm leading-relaxed text-slate-600">
+                {post.description}
+              </p>
+
+              <span className="mt-4 inline-block text-sm font-semibold text-blue-600">
+                Read Guide →
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <a
+          href="/blog"
+          className="mt-5 inline-block font-semibold text-blue-600 hover:underline"
+        >
+          View All Instagram Guides →
+        </a>
+      </section>
     </div>
   );
 }

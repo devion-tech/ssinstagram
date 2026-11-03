@@ -25,7 +25,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="main-content">
+    <main className="mx-auto w-full max-w-4xl flex-1 px-5 pt-4 pb-16 ">
       <DownloaderTool />
       <HomeSeoContent />
     </main>

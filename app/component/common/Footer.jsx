@@ -23,6 +23,10 @@ export function Footer() {
         <Link href="/about" className="footer-nav-link">
           About
         </Link>
+
+        <Link href="/blog" className="footer-nav-link">
+          Blog
+        </Link>
       </nav>
 
       <p className="footer-disclaimer-text">

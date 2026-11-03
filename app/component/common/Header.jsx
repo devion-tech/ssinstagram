@@ -29,7 +29,7 @@ export function Header() {
           <div className="brand-text-wrap">
             <span className="logo-ss">SS</span>
             <span className="logo-name">Instagram</span>
-            <span className="logo-tld">.online</span>
+            {/* <span className="logo-tld">.online</span> */}
           </div>
         </Link>
 
@@ -37,6 +37,7 @@ export function Header() {
           <Link href="/#how-to" className="nav-link">How To</Link>
           <Link href="/#overview" className="nav-link">Overview</Link>
           <Link href="/#devices" className="nav-link">Devices</Link>
+          <Link href="/blog" className="nav-link">Blog</Link>
         </nav>
       </div>
     </header>

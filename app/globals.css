@@ -141,15 +141,6 @@
   border-radius: var(--radius-pill);
 }
 
-/* Main Content Container */
-.main-content {
-  width: 100%;
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 3rem 1.25rem 4rem;
-  flex: 1;
-}
-
 /* Downloader Form (SSYouTube Minimal Style) */
 .tool-form {
   width: 100%;
@@ -600,10 +591,6 @@
 @media (max-width: 640px) {
   .header-nav {
     display: none;
-  }
-
-  .main-content {
-    padding: 2.25rem 1rem 3.5rem;
   }
 
   .result-grid {
